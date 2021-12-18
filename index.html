@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dwiti</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+    <style>
+        #main {
+            width: 250px;
+            height: 400px;
+            /* border: 1px solid hsl(0, 100%, 50%); */
+            display: flex;
+            margin-top: 160px;
+            flex-direction: column;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .button {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            width: 100%;
+            height: 15%;
+            flex: 35%;
+        }
+
+        .action_button {
+            width: 60px;
+            height: 30px;
+            background-color: #047a73;
+        }
+
+        .work {
+            flex: 65%;
+            transition-property: all;
+            transition-timing-function: linear;
+            position: relative;
+        }
+
+        .circle1 {
+            background-color: #ff0007;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            z-index: 4;
+
+            position: absolute;
+
+            top: 0px;
+            left: 0px;
+
+            transition: background 0.5s ease;
+
+            transition-property: all;
+            transition-timing-function: linear;
+
+
+
+        }
+
+        .animation_1 {
+            animation: test_animation 1.5s linear infinite;
+        }
+
+        .animation_2 {
+            animation: test_animation_2 1.5s linear infinite;
+
+        }
+
+        .animation_3 {
+            animation: test_animation_3 1.5s linear infinite;
+        }
+
+        .animation_4 {
+            animation: test_animation_4 1.5s linear infinite;
+        }
+
+        .circle2 {
+            background-color: #007c30;
+            grid-row-start: 5;
+            grid-row-end: 4;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            transition: background 0.5s ease;
+            position: absolute;
+            bottom: 0px;
+            left: 0px;
+            z-index: 1;
+        }
+
+
+
+        .circle3 {
+            background-color: #fff854;
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 4;
+            grid-column-end: 5;
+            transition: background 0.5s ease;
+            position: absolute;
+            top: 0px;
+            right: 0px;
+            z-index: 3;
+        }
+
+
+        .circle4 {
+            background-color: #00a5f6;
+
+            grid-row-start: 4;
+            grid-row-end: 5;
+            grid-column-start: 5;
+            grid-column-end: 4;
+            transition: background 0.7s ease;
+            position: absolute;
+
+            bottom: 0px;
+            right: 0px;
+
+            z-index: 2;
+        }
+
+
+
+        .circle_all {
+            border-radius: 50px;
+            width: 25%;
+            height: 25%;
+        }
+
+        @keyframes test_animation {
+            0% {
+                width: 25%
+            }
+
+            25% {
+                width: 50%
+            }
+
+            50% {
+                width: 100%
+            }
+
+            75% {
+                width: 50%
+            }
+
+            100% {
+                width: 25%
+            }
+        }
+
+        @keyframes test_animation_2 {
+            0% {
+                height: 25%
+            }
+
+            25% {
+                height: 50%
+            }
+
+            50% {
+                height: 100%
+            }
+
+            75% {
+                height: 50%
+            }
+
+            100% {
+                height: 25%
+            }
+        }
+
+        @keyframes test_animation_3 {
+            0% {
+                height: 25%
+            }
+
+            25% {
+                height: 50%
+            }
+
+            50% {
+                height: 100%
+            }
+
+            75% {
+                height: 50%
+            }
+
+            100% {
+                height: 25%
+            }
+        }
+
+        @keyframes test_animation_4 {
+            0% {
+                width: 25%
+            }
+
+            25% {
+                width: 50%
+            }
+
+            50% {
+                width: 100%
+            }
+
+            75% {
+                width: 50%
+            }
+
+            100% {
+                width: 25%
+            }
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="main">
+
+        <div class="work">
+            <div class="circle1 circle_all"></div>
+            <div class="circle2 circle_all"></div>
+            <div class="circle3 circle_all"></div>
+            <div class="circle4 circle_all"></div>
+        </div>
+        <div class="button">
+            <button class="action_button button_start" type="button">Start</button>
+            <button class="action_button button_stop" type="button">Stop</button>
+        </div>
+
+    </div>
+    <script>
+
+        document.querySelector('.circle_all').addEventListener("animationiteration", function () {
+            circle2_ele = document.querySelector('.circle2');
+            circle1_ele = document.querySelector('.circle1');
+            circle3_ele = document.querySelector('.circle3');
+            circle4_ele = document.querySelector('.circle4');
+
+
+            circle2_style = window.getComputedStyle(circle2_ele);
+            circle1_style = window.getComputedStyle(circle1_ele);
+            circle3_style = window.getComputedStyle(circle3_ele);
+            circle4_style = window.getComputedStyle(circle4_ele);
+
+            color_array = [circle3_style.backgroundColor, circle4_style.backgroundColor, circle2_style.backgroundColor, circle1_style.backgroundColor];
+
+            setInterval(function () {
+                document.querySelector('.circle1').style.backgroundColor = color_array[0];
+                document.querySelector('.circle3').style.backgroundColor = color_array[1];
+                document.querySelector('.circle4').style.backgroundColor = color_array[2];
+                document.querySelector('.circle2').style.backgroundColor = color_array[3];
+            }, 0);
+        }, false);
+
+        circle2_ele = document.querySelector('.circle2');
+        circle1_ele = document.querySelector('.circle1');
+        circle3_ele = document.querySelector('.circle3');
+        circle4_ele = document.querySelector('.circle4');
+
+
+        start_button = document.querySelector('.button_start');
+        stop_button = document.querySelector('.button_stop');
+
+
+        start_button.onclick = () => {
+            circle1_ele.classList.add("animation_1");
+            circle2_ele.classList.add("animation_2");
+            circle3_ele.classList.add("animation_3");
+            circle4_ele.classList.add("animation_4");
+        }
+
+        stop_button.onclick = () => {
+            circle1_ele.classList.remove("animation_1");
+            circle2_ele.classList.remove("animation_2");
+            circle3_ele.classList.remove("animation_3");
+            circle4_ele.classList.remove("animation_4");
+        }
+
+    </script>
+
+</body>
+
+</html>
